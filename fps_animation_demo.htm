@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<style>
+.bg {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  background-color: #ddd;
+}
+
+#img_0, #img_1, #img_2 {
+  background-color: #4CAF50;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  opacity: 0.1;
+  filter: alpha(opacity=10); /* IE fallback */
+}
+</style>
+<body>
+
+<h1>10 fps</h1>
+
+<div class="bg">
+  <div id="img_0"></div>
+</div>
+
+<br>
+<button onclick="move_0()">click</button> 
+
+<script>
+function move_0() {
+  var e = document.getElementById("img_0");   
+  var opacity = 10;
+  var fps = setInterval(frame, 1000/10);
+  function frame() {
+    if (e.style.opacity == 0.99 || e.style.filter  == 'alpha(opacity=99)') {
+      e.style.opacity = '1';
+      e.style.filter  = 'alpha(opacity=100)'; // IE fallback
+      clearInterval(fps);
+    } else {
+      opacity++; 
+      e.style.opacity = '0.'+opacity;
+      e.style.filter  = 'alpha(opacity='+opacity+')'; // IE fallback
+    }
+  }
+}
+</script>
+
+<h1>30fps</h1>
+
+<div class="bg">
+  <div id="img_1"></div>
+</div>
+
+<br>
+<button onclick="move_1()">click</button> 
+
+<script>
+function move_1() {
+  var e = document.getElementById("img_1");   
+  var opacity = 10;
+  var fps = setInterval(frame, 1000/30);
+  function frame() {
+    if (e.style.opacity == 0.99 || e.style.filter  == 'alpha(opacity=99)') {
+      e.style.opacity = '1';
+      e.style.filter  = 'alpha(opacity=100)'; // IE fallback
+      clearInterval(fps);
+    } else {
+      opacity++; 
+      e.style.opacity = '0.'+opacity;
+      e.style.filter  = 'alpha(opacity='+opacity+')'; // IE fallback
+    }
+  }
+}
+</script>
+
+<h1>60fps</h1>
+
+<div class="bg">
+  <div id="img_2"></div>
+</div>
+
+<br>
+<button onclick="move_2()">click</button> 
+
+<script>
+function move_2() {
+  var e = document.getElementById("img_2");   
+  var opacity = 10;
+  var fps = setInterval(frame, 1000/60);
+  function frame() {
+    if (e.style.opacity == 0.99 || e.style.filter  == 'alpha(opacity=99)') {
+      e.style.opacity = '1';
+      e.style.filter  = 'alpha(opacity=100)'; // IE fallback
+      clearInterval(fps);
+    } else {
+      opacity++; 
+      e.style.opacity = '0.'+opacity;
+      e.style.filter  = 'alpha(opacity='+opacity+')'; // IE fallback
+    }
+  }
+}
+</script>
+
+</body>
+</html>
