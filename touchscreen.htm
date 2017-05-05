@@ -8,7 +8,16 @@
 	@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 	
 	html,body{height:100%;padding:0px;margin:0px;}
-	
+
+	.noselect {
+	  -webkit-touch-callout: none;
+	    -webkit-user-select: none;
+	     -khtml-user-select: none;
+	       -moz-user-select: none;
+	        -ms-user-select: none;
+	            user-select: none;
+	}
+
 	.keyboard_wrap{
 		position:fixed;
 		z-index:99999999999999999;
@@ -102,7 +111,7 @@
 
 <script type="text/javascript">
 
-	var css = '@import url(https://fonts.googleapis.com/css?family=Ubuntu);body,html{height:100%;padding:0;margin:0}.keyboard_wrap{position:fixed;z-index:99999999999999999;bottom:0;width:100%;height:28%;padding:10px;background-color:rgba(0,0,0,.7);display:none}.keyboard_close{position:absolute;right:20px;top:0;text-align:center;font-family:helvetica;font-weight:700;font-size:25px;line-height:30px;background-color:red;color:#fff;width:30px;height:35px}.key_,.key_space{font-weight:900;font-family:Ubuntu,sans-serif;cursor:pointer;color:#000;border-radius:3px;height:20px;padding:5px;margin:.5%;float:left;text-align:center}.key_{background-color:rgba(255,255,255,.7);width:7%}.key_:hover{background-color:#fff}.key_space{background-color:rgba(255,255,255,.7);width:22%}.float_kill{content:"";clear:both;display:table}#sh_keys{display:none}',
+	var css = '@import url(https://fonts.googleapis.com/css?family=Ubuntu);body,html{height:100%;padding:0;margin:0}.noselect{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.keyboard_wrap{position:fixed;z-index:99999999999999999;bottom:0;width:100%;height:28%;padding:10px;background-color:rgba(0,0,0,.7);display:none}.keyboard_close{position:absolute;right:20px;top:0;text-align:center;font-family:helvetica;font-weight:700;font-size:25px;line-height:30px;background-color:red;color:#fff;width:30px;height:35px}.key_,.key_space{font-weight:900;font-family:Ubuntu,sans-serif;cursor:pointer;color:#000;border-radius:3px;height:20px;padding:5px;margin:.5%;float:left;text-align:center}.key_{background-color:rgba(255,255,255,.7);width:7%}.key_:hover{background-color:#fff}.key_space{background-color:rgba(255,255,255,.7);width:22%}.float_kill{content:"";clear:both;display:table}#sh_keys{display:none}',
 		head = document.head || document.getElementsByTagName('head')[0],
 		style = document.createElement('style');
 
@@ -157,7 +166,7 @@
 
 		// create a new key div element
 		var new_key = document.createElement("div"); 
-		new_key.className = "key_";
+		new_key.className = "key_ noselect";
 		
 		// set key text
 		var set_key_val = document.createTextNode(ascii); 
@@ -181,12 +190,12 @@
 		sh_keys = document.getElementById("sh_keys");
 
 		var key_space = [[ 49,  33],[ 50,  34],[ 51, 167],[ 52,  36],[ 53,  37],[ 54,  38],
-                     [ 55,  47],[ 56,  40],[ 57,  41],[ 48,  61],[001, 001],[113,  81],
-                     [119,  87],[101,  69],[114,  82],[116,  84],[122,  90],[117,  85],
-                     [105,  73],[111,  79],[112,  80],[252, 220],[ 97,  65],[115,  83],
-                     [100,  68],[102,  70],[103,  71],[104,  72],[106,  74],[107,  75],
-                     [108,  76],[246, 214],[228, 196],[ 15,  15],[121,  89],[120,  88], 
-                     [ 99,  67],[118,  86],[ 98,  66],[110,  78],[109,  77],[000, 000]];
+				 [ 55,  47],[ 56,  40],[ 57,  41],[ 48,  61],[001, 001],[113,  81],
+				 [119,  87],[101,  69],[114,  82],[116,  84],[122,  90],[117,  85],
+				 [105,  73],[111,  79],[112,  80],[252, 220],[ 97,  65],[115,  83],
+				 [100,  68],[102,  70],[103,  71],[104,  72],[106,  74],[107,  75],
+				 [108,  76],[246, 214],[228, 196],[ 15,  15],[121,  89],[120,  88], 
+				 [ 99,  67],[118,  86],[ 98,  66],[110,  78],[109,  77],[000, 000]];
 
 		for(var i = 0, k = key_space.length; i < k; i++)
 		{
