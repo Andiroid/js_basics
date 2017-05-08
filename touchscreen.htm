@@ -4,18 +4,15 @@
 	<title></title>
 
 <style type="text/css">
-	/*
-	@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-	
-	html,body{height:100%;padding:0px;margin:0px;}
+
 
 	.noselect {
-	  -webkit-touch-callout: none;
-	    -webkit-user-select: none;
-	     -khtml-user-select: none;
-	       -moz-user-select: none;
-	        -ms-user-select: none;
-	            user-select: none;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	.keyboard_wrap{
@@ -23,15 +20,19 @@
 		z-index:99999999999999999;
 		bottom:0px;
 		width:100%;
-		height:28%;
-		padding:10px;
+		height:30%;
+		padding-top:40px;
 		background-color: rgba(0, 0, 0, 0.7);
 		display:none;
 	}
-	
+@media screen and (max-height: 600px) {
+    .keyboard_wrap{
+        height:38%;
+    }
+}	
 	.keyboard_close{
 		position:absolute;
-		right:20px;
+		right:0px;
 		top:0px;
 		text-align: center;
 		font-family: helvetica;
@@ -47,14 +48,14 @@
 	
 	.key_{
 		font-weight: 900;
-		font-family: 'Ubuntu', sans-serif;
+		font-family: helvetica;
 		cursor:pointer;
 		color:#000;
 		background-color: rgba(255, 255, 255, 0.7);
 		border-radius: 3px;
 		width:7%;
-		height:20px;
-		padding:5px;
+		height:3%;
+		padding:0.541%;
 		margin:0.5%;
 		float:left;
 		text-align:center;
@@ -64,14 +65,14 @@
 	}
 	.key_space{
 		font-weight: 900;
-		font-family: 'Ubuntu', sans-serif;
+		font-family: helvetica;
 		cursor:pointer;
 		color:#000;
 		background-color: rgba(255, 255, 255, 0.7);
 		border-radius: 3px;
-		width:22%;
-		height:20px;
-		padding:5px;
+		width:25%;
+		height:3%;
+		padding:0.541%;
 		margin:0.5%;
 		float:left;
 		text-align:center;
@@ -84,10 +85,12 @@
 	}
 
 	#sh_keys{
-	display: none;
+		display: none;
 	}
-	*/
+	
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 
@@ -111,7 +114,10 @@
 </html>
 <script type="text/javascript">
 
-	var css = 'body,html{height:100%;padding:0;margin:0}.noselect{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.keyboard_wrap{position:fixed;z-index:99999999999999999;bottom:0;width:100%;height:28%;padding:10px;background-color:rgba(0,0,0,.7);display:none}.keyboard_close{position:absolute;right:20px;top:0;text-align:center;font-family:helvetica;font-weight:700;font-size:25px;line-height:30px;background-color:red;color:#fff;width:30px;height:35px;cursor:pointer}.key_,.key_space{font-weight:900;font-family:helvetica;cursor:pointer;color:#000;border-radius:3px;height:20px;padding:5px;margin:.5%;float:left;text-align:center}.key_{background-color:rgba(255,255,255,.7);width:7%}.key_:hover,.key_space:hover{background-color:#fff}.key_space{background-color:rgba(255,255,255,.7);width:24.5%}.float_kill{content:"";clear:both;display:table}#sh_keys{display:none}',
+	//document.head.insertAdjacentHTML('beforeEnd', '<meta name="viewport" content="width=device-width, initial-scale=1.0" />');
+	//document.getElementsByTagName('head')[0].innerText = document.head.innerHTML;
+
+	var css = '.noselect{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.keyboard_wrap{position:fixed;z-index:99999999999999999;bottom:0;width:100%;height:30%;padding-top:40px;background-color:rgba(0,0,0,.7);display:none}@media screen and (max-height:600px){.keyboard_wrap{height:38%}}.keyboard_close{position:absolute;right:0;top:0;text-align:center;font-family:helvetica;font-weight:700;font-size:25px;line-height:30px;background-color:red;color:#fff;width:30px;height:35px;cursor:pointer}.key_,.key_space{font-weight:900;font-family:helvetica;cursor:pointer;color:#000;border-radius:3px;height:3%;padding:.541%;margin:.5%;float:left;text-align:center}.key_{background-color:rgba(255,255,255,.7);width:7%}.key_:hover{background-color:#fff}.key_space{background-color:rgba(255,255,255,.7);width:25%}.float_kill{content:"";clear:both;display:table}#sh_keys{display:none}',
 		head = document.head || document.getElementsByTagName('head')[0],
 		style = document.createElement('style');
 
@@ -157,13 +163,13 @@
 		// translate current keyspace array code to its ascii compliment
 		if(val === 15)
 		{
-			var ascii = "shift";
+			var ascii = "🡹";
 		}
 		else if(val === 001)
 		{
-			var ascii = "back";
+			var ascii = "🡸";
 		}
-		else if(val === 00)
+		else if(val === 000)
 		{
 			var ascii = "space";
 			new_key.className += " key_space";
@@ -195,12 +201,12 @@
 		sh_keys = document.getElementById("sh_keys");
 
 		var key_space = [[ 49,  33],[ 50,  34],[ 51, 167],[ 52,  36],[ 53,  37],[ 54,  38],
-				 [ 55,  47],[ 56,  40],[ 57,  41],[ 48,  61],[001, 001],[113,  81],
-				 [119,  87],[101,  69],[114,  82],[116,  84],[122,  90],[117,  85],
-				 [105,  73],[111,  79],[112,  80],[252, 220],[ 97,  65],[115,  83],
-				 [100,  68],[102,  70],[103,  71],[104,  72],[106,  74],[107,  75],
-				 [108,  76],[246, 214],[228, 196],[ 15,  15],[121,  89],[120,  88], 
-				 [ 99,  67],[118,  86],[ 98,  66],[110,  78],[109,  77],[000, 000]];
+						 [ 55,  47],[ 56,  40],[ 57,  41],[ 48,  61],[001, 001],[113,  81],
+						 [119,  87],[101,  69],[114,  82],[116,  84],[122,  90],[117,  85],
+						 [105,  73],[111,  79],[112,  80],[252, 220],[ 97,  65],[115,  83],
+						 [100,  68],[102,  70],[103,  71],[104,  72],[106,  74],[107,  75],
+						 [108,  76],[246, 214],[228, 196],[ 15,  15],[121,  89],[120,  88], 
+						 [ 99,  67],[118,  86],[ 98,  66],[110,  78],[109,  77],[000, 000]];
 
 		for(var i = 0, k = key_space.length; i < k; i++)
 		{
@@ -255,13 +261,42 @@
 		}
 	};
 
+
+	function add_char(input,startpos,char){
+
+		var startpos = input.selectionStart;
+
+		var str = input.value;				
+
+		str = str.slice(0, startpos) + char + str.slice(startpos);
+		input.value = str;
+
+		input.setSelectionRange(startpos+1, startpos+1);
+	}
+
+	function del_char(input,startpos){
+		if(startpos !== 0)
+		{
+			var str = input.value;				
+
+			str = str.slice(0, startpos-1) + str.slice(startpos);
+
+			input.value = str;
+
+			input.setSelectionRange(startpos-1, startpos-1);
+		}	
+	}
+
 	var keyz = document.getElementsByClassName('key_');
 	
 	for(var i = 0, l = keyz.length; i < l; i++)
 	{
 		keyz[i].onclick = function() 
 		{ 
-			if(this.innerHTML === "shift")
+			var input = document.getElementsByClassName("active_input")[0];
+			var startpos = input.selectionStart;
+
+			if(this.innerHTML === "🡹")
 			{
 				if(state === 0)
 				{
@@ -277,23 +312,19 @@
 				}
 
 			}
-			else if(this.innerHTML === "back")
+			else if(this.innerHTML === "🡸")
 			{
-
-				//var startpos = document.getElementsByClassName("active_input")[0].selectionStart;
-				//var val_len = document.getElementsByClassName("active_input")[0].value.length;
-				var str = document.getElementsByClassName("active_input")[0].value;
-				str = str.slice(0, -1);
-				document.getElementsByClassName("active_input")[0].value = str;
+				del_char(input,startpos)
 			}
 			else if(this.innerHTML === "space")
 			{
-				document.getElementsByClassName("active_input")[0].value += " ";
+				add_char(input,startpos," ")
 			}
 			else 
-			{
-				document.getElementsByClassName("active_input")[0].value += this.innerHTML;
+			{	
+				add_char(input,startpos,this.innerHTML)
 			}
+			input.focus();
 		}
 	}
 
